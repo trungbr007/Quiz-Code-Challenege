@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quizz</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+<body>
+    
+    <main>
+        <header>
+            <div class="view-high-score">
+                
+                <h4>View High Score
+                    <h4 id="score">Score</h4>
+                </h4>
+            </div>
+            <div id ="TiMer" class="timer-running">
+                <h4>
+                    Time left:0
+                </h4>
+            </div>
+        </header>
+            <div id="display-box" class="container">
+                <div class="title">
+                    <h1>Coding challenge</h1>
+                </div>
+             <div class="content">
+               <p>Try to answer the following code-related questions within the time limit.
+                   <br>
+                   Keep in mind that incorect answers will penalize your score/time <br> by ten seconds 
+               </p>
+            </div>
+     
+            <div id="question container" class="hidden">
+                <div id="questions">Question</div>
+                <div id="answer-buttons" class="answer-btns">
+                    <button class="ans-btn">Answer 1</button>
+                    <button class="ans-btn">Answer 2</button>
+                    <button class="ans-btn">Answer 3</button>
+                    <button class="ans-btn">Answer 4</button>
+                </div>
+
+            </div>
+            <div class="controls">
+                <button id="start-button" class="start-btn btn">Start</button>
+                <button id = "submit-button" class="submit-btn btn hidden">Submit</button>
+
+            </div>
+        </div>
+
+    </main>
+    <script src="./assets/js/quiz.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>
