@@ -54,7 +54,7 @@ main{
     background-color: rgb(131, 160, 212);
     border-radius: 10px;
     display: inline-block;
-    width: 35%;
+    width: fit-content;
     height: 40px;
     
 }
@@ -73,7 +73,6 @@ main{
     padding: 10px 25px;
     text-align: center;
     text-decoration: none;
-   
     font-size: 16px;
 
 }
@@ -89,6 +88,12 @@ main{
     display:none;
 }
 
+#score{
 
+display:none;
+}
 
+.ans-btn:hover{
+    background-color: aqua;
 
+}

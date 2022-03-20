@@ -33,7 +33,7 @@ var quizzQuestion=[{
     correct:'b'
 }];
 
-
+var selectedAnswer;
 var currentQuestion= 0;
 const startBtn=document.getElementById("start-button");
 const TiMer= document.getElementById("TiMer");
@@ -44,35 +44,103 @@ const scoRe= document.getElementById("score");
 const title=document.querySelector(".title");
 const content=document.querySelector(".content");
 const questionbox=document.getElementById("question-container");
+const choiceA=document.getElementById("choiceA");
+const choiceB=document.getElementById("choiceB");
+const choiceC=document.getElementById("choiceC");
+const choiceD=document.getElementById("choiceD");
+
+
 
 startBtn.addEventListener('click',showQuestion);
+submitBtn.addEventListener('click',submitAnswer);
+choiceA.addEventListener('click',choiceAClicked);
+choiceB.addEventListener('click',choiceBClicked);
+choiceC.addEventListener('click',choiceCClicked);
+choiceD.addEventListener('click',choiceDClicked);
 
 
-function displayQuestion(){
+function choiceAClicked(){
 
-    questionbox.style.display='block';
-    submitBtn.style.display='block';
-}
-
-function showQuestion(){
-
-    startBtn.style.display='none';
-    title.remove();
-    content.remove();
-
-    return displayQuestion();
+    choiceA.style.backgroundColor="aqua";
+    selectedAnswer = "a";
+    choiceB.style.backgroundColor="rgb(131, 160, 212)";
+    choiceC.style.backgroundColor="rgb(131, 160, 212)";
+    choiceD.style.backgroundColor="rgb(131, 160, 212)";
 
 };
+function choiceBClicked(){
+
+    choiceB.style.backgroundColor="aqua";
+    selectedAnswer = "b";
+    choiceA.style.backgroundColor="rgb(131, 160, 212)";
+    choiceC.style.backgroundColor="rgb(131, 160, 212)";
+    choiceD.style.backgroundColor="rgb(131, 160, 212)";
+
+};
+function choiceCClicked(){
+
+    choiceC.style.backgroundColor="aqua";
+    selectedAnswer = "c";
+    choiceB.style.backgroundColor="rgb(131, 160, 212)";
+    choiceA.style.backgroundColor="rgb(131, 160, 212)";
+    choiceD.style.backgroundColor="rgb(131, 160, 212)";
+
+};
+function choiceDClicked(){
+
+    choiceD.style.backgroundColor="aqua";
+    selectedAnswer = "d";
+    choiceB.style.backgroundColor="rgb(131, 160, 212)";
+    choiceC.style.backgroundColor="rgb(131, 160, 212)";
+    choiceA.style.backgroundColor="rgb(131, 160, 212)";
+
+};
+
+
+
+
+
+function showQuestion(i){
+
+    startBtn.style.display='none';
+    content.innerHTML="";
+    questionbox.style.display='block';
+    submitBtn.style.display='block';
+
+    title.innerHTML=" Question "+(currentQuestion+1) +": "+quizzQuestion[currentQuestion].q;
+    choiceA.innerHTML="a."+quizzQuestion[currentQuestion].a[0];
+    choiceB.innerHTML="b."+quizzQuestion[currentQuestion].a[1];
+    choiceC.innerHTML="c."+quizzQuestion[currentQuestion].a[2];
+    choiceD.innerHTML="d."+quizzQuestion[currentQuestion].a[3];
+};
+
+
+
+function submitAnswer(){
+    
+
+    currentQuestion++;
+    if(currentQuestion>=quizzQuestion.lenght){
+
+        return ;
+    } else{
+        selectedAnswer=null;
+    choiceC.style.backgroundColor="rgb(131, 160, 212)";
+    choiceB.style.backgroundColor="rgb(131, 160, 212)";
+    choiceA.style.backgroundColor="rgb(131, 160, 212)";
+    choiceD.style.backgroundColor="rgb(131, 160, 212)";
+
+        showQuestion();
+    }
+}
+
 
 function showAnswer(){
 
 
 };
 
-function currentQuestion(){
 
-
-};
 
 function scoreRender(){
 
