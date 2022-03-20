@@ -41,40 +41,50 @@ const q=document.getElementById("questions");
 const a= document.getElementById("answer-buttons");
 const submitBtn=document.getElementById("submit-button");
 const scoRe= document.getElementById("score");
-var correct
- 
+const title=document.querySelector(".title");
+const content=document.querySelector(".content");
+const questionbox=document.getElementById("question-container");
 
 startBtn.addEventListener('click',showQuestion);
-submitBtn.addEventListener('click',currentQuestion)
+
+
+function displayQuestion(){
+
+    questionbox.style.display='block';
+    submitBtn.style.display='block';
+}
 
 function showQuestion(){
-var tiTle= document.querySelector(".title");
-var conTent=document.querySelector(".content");
 
+    startBtn.style.display='none';
+    title.remove();
+    content.remove();
 
-}
+    return displayQuestion();
+
+};
 
 function showAnswer(){
 
 
-}
+};
 
 function currentQuestion(){
 
 
-}
+};
 
 function scoreRender(){
 
 
 
-}
+};
 
 function timeLeft(){
 
 
 
-}
+};
 
 
 
