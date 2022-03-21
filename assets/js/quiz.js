@@ -1,7 +1,7 @@
 var quizzQuestion=[{
     q: "What is CSS stand for?",
     a:['Cascading Style Sheets','Creative Style Sheets','Colorful Style Sheets','Computer Style Sheets'],
-    correct:'a'
+    correct:'a.Cascading Style Sheets'
 },
 
 {
@@ -11,26 +11,26 @@ var quizzQuestion=[{
     'Make the background in all divs that are of the class "p" be bright red',
     'Make the text inside any divs inside of any paragraph be bright red',
     'Make the text inside any paragraph that is inside any div be bright red'],
-    correct:'b'
+    correct:'b.Make the background in all divs that are of the class "p" be bright red'
 },
 
 {
     q: "Which HTML attribute is used to define inline styles?",
     a:['font','styles','style','class'],
-    correct:'b'
+    correct:'b.styles'
 
 },
 
 {
     q:"Which is the correct CSS syntax?",
     a:['{body:color=black;}','body{color:black;}','body:color=black;','{body;color:black;}'],
-    correct:'b'
+    correct:'b.body{color:black;}'
 },
 
 {
     q:"How do you insert a comment in a CSS file?",
     a:['// this is a comment','/* this is a comment*/','.this is a comment','//this is a comment//'],
-    correct:'b'
+    correct:'b./* this is a comment*/'
 }];
 
 var selectedAnswer;
@@ -44,11 +44,12 @@ const scoRe= document.getElementById("score");
 const title=document.querySelector(".title");
 const content=document.querySelector(".content");
 const questionbox=document.getElementById("question-container");
-const choiceA=document.getElementById("choiceA");
-const choiceB=document.getElementById("choiceB");
-const choiceC=document.getElementById("choiceC");
-const choiceD=document.getElementById("choiceD");
-
+var choiceA=document.getElementById("choiceA");
+var choiceB=document.getElementById("choiceB");
+var choiceC=document.getElementById("choiceC");
+var choiceD=document.getElementById("choiceD");
+const answerCorrect=document.getElementById("correct-answer");
+const answerIncorrect=document.getElementById("incorrect-answer");
 
 
 startBtn.addEventListener('click',showQuestion);
@@ -100,7 +101,7 @@ function choiceDClicked(){
 
 
 
-function showQuestion(i){
+function showQuestion(){
 
     startBtn.style.display='none';
     content.innerHTML="";
@@ -115,14 +116,15 @@ function showQuestion(i){
 };
 
 
-
 function submitAnswer(){
     
 
     currentQuestion++;
     if(currentQuestion>=quizzQuestion.lenght){
 
-        return ;
+        return checkANswer;
+
+
     } else{
         selectedAnswer=null;
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
@@ -132,13 +134,28 @@ function submitAnswer(){
 
         showQuestion();
     }
-}
+};
 
 
-function showAnswer(){
+  function checkANswer (){
+
+    if (choiceAClicked.value=quizzQuestion.correct){
+        return answerCorrect.style.display='block'
+    } else if(
+        choiceBClicked.value=quizzQuestion.correct){
+            return answerCorrect.style.display='block'
+        } else if(
+        choiceCClicked.value=quizzQuestion.correct){
+            return answerCorrect.style.display='block'
+        } else if(
+        choiceDClicked.value=quizzQuestion.correct){
+        return  answerCorrect.style.display='block'
+    }
+    else answerIncorrect.style.display='block';
 
 
 };
+
 
 
 
