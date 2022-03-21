@@ -1,7 +1,7 @@
 var quizzQuestion=[{
     q: "What is CSS stand for?",
     a:['Cascading Style Sheets','Creative Style Sheets','Colorful Style Sheets','Computer Style Sheets'],
-    correct:'a.Cascading Style Sheets'
+    correct:'a'
 },
 
 {
@@ -11,26 +11,26 @@ var quizzQuestion=[{
     'Make the background in all divs that are of the class "p" be bright red',
     'Make the text inside any divs inside of any paragraph be bright red',
     'Make the text inside any paragraph that is inside any div be bright red'],
-    correct:'b.Make the background in all divs that are of the class "p" be bright red'
+    correct:'b'
 },
 
 {
     q: "Which HTML attribute is used to define inline styles?",
     a:['font','styles','style','class'],
-    correct:'b.styles'
+    correct:'b'
 
 },
 
 {
     q:"Which is the correct CSS syntax?",
     a:['{body:color=black;}','body{color:black;}','body:color=black;','{body;color:black;}'],
-    correct:'b.body{color:black;}'
+    correct:'b'
 },
 
 {
     q:"How do you insert a comment in a CSS file?",
     a:['// this is a comment','/* this is a comment*/','.this is a comment','//this is a comment//'],
-    correct:'b./* this is a comment*/'
+    correct:'b'
 }];
 
 var selectedAnswer;
@@ -50,6 +50,7 @@ var choiceC=document.getElementById("choiceC");
 var choiceD=document.getElementById("choiceD");
 const answerCorrect=document.getElementById("correct-answer");
 const answerIncorrect=document.getElementById("incorrect-answer");
+const ansChecked = document.getElementById("check-ans");
 
 
 startBtn.addEventListener('click',showQuestion);
@@ -67,6 +68,7 @@ function choiceAClicked(){
     choiceB.style.backgroundColor="rgb(131, 160, 212)";
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
     choiceD.style.backgroundColor="rgb(131, 160, 212)";
+
 
 };
 function choiceBClicked(){
@@ -102,7 +104,7 @@ function choiceDClicked(){
 
 
 function showQuestion(){
-
+   
     startBtn.style.display='none';
     content.innerHTML="";
     questionbox.style.display='block';
@@ -115,61 +117,58 @@ function showQuestion(){
     choiceD.innerHTML="d."+quizzQuestion[currentQuestion].a[3];
 };
 
+function checkSlection(answerCorrect,answerIncorrect){
+    if(choiceAClicked.selectedAnswer.value===quizzQuestion.correct.value) {
+
+            console.log('right');}
+
+        // return answerCorrect
+    // } else {
+    //     answerIncorrect
+    // };
+    // if(choiceBClicked.selectedAnswer===quizzQuestion.correct) {
+    //     return answerCorrect
+    // } else {
+    //     answerIncorrect
+    // };
+    // if(choiceCClicked.selectedAnswer===quizzQuestion.correct) {
+    //     return answerCorrect
+    // } else {
+    //     answerIncorrect
+    // };
+    // if(choiceDClicked.selectedAnswer===quizzQuestion.correct) {
+    //     return answerCorrect
+    // } else {
+    //     answerIncorrect
+    // };
+
+
+};
 
 function submitAnswer(){
-    
 
     currentQuestion++;
     if(currentQuestion>=quizzQuestion.lenght){
+        
+        return "You have completed the quizz"
 
-        return checkANswer;
 
 
     } else{
-        selectedAnswer=null;
+
+        return checkSlection;
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
     choiceB.style.backgroundColor="rgb(131, 160, 212)";
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
-    choiceD.style.backgroundColor="rgb(131, 160, 212)";
-
-        showQuestion();
-    }
+    choiceD.style.backgroundColor="rgb(131, 160, 212)";   
+        
+    };
 };
+   
+
+   
 
 
-  function checkANswer (){
-
-    if (choiceAClicked.value=quizzQuestion.correct){
-        return answerCorrect.style.display='block'
-    } else if(
-        choiceBClicked.value=quizzQuestion.correct){
-            return answerCorrect.style.display='block'
-        } else if(
-        choiceCClicked.value=quizzQuestion.correct){
-            return answerCorrect.style.display='block'
-        } else if(
-        choiceDClicked.value=quizzQuestion.correct){
-        return  answerCorrect.style.display='block'
-    }
-    else answerIncorrect.style.display='block';
-
-
-};
-
-
-
-
-function scoreRender(){
-
-
-
-};
-
-function timeLeft(){
-
-
-
-};
 
 
 
