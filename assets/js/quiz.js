@@ -99,6 +99,11 @@ function choiceDClicked(){
 
 };
 
+function submitAnswer(){
+
+    checkSelection();
+
+}
 
 
 
@@ -117,53 +122,54 @@ function showQuestion(){
     choiceD.innerHTML="d."+quizzQuestion[currentQuestion].a[3];
 };
 
-function checkSlection(answerCorrect,answerIncorrect){
-    if(choiceAClicked.selectedAnswer.value===quizzQuestion.correct.value) {
+function checkSelection(answerCorrect,answerIncorrect){
 
-            console.log('right');}
+    if(choiceAClicked.selectedAnswer===quizzQuestion.correct.value) {
 
-        // return answerCorrect
-    // } else {
-    //     answerIncorrect
-    // };
-    // if(choiceBClicked.selectedAnswer===quizzQuestion.correct) {
-    //     return answerCorrect
-    // } else {
-    //     answerIncorrect
-    // };
-    // if(choiceCClicked.selectedAnswer===quizzQuestion.correct) {
-    //     return answerCorrect
-    // } else {
-    //     answerIncorrect
-    // };
-    // if(choiceDClicked.selectedAnswer===quizzQuestion.correct) {
-    //     return answerCorrect
-    // } else {
-    //     answerIncorrect
-    // };
-
-
-};
-
-function submitAnswer(){
-
-    currentQuestion++;
-    if(currentQuestion>=quizzQuestion.lenght){
-        
-        return "You have completed the quizz"
-
-
-
-    } else{
-
-        return checkSlection;
-    choiceC.style.backgroundColor="rgb(131, 160, 212)";
-    choiceB.style.backgroundColor="rgb(131, 160, 212)";
-    choiceA.style.backgroundColor="rgb(131, 160, 212)";
-    choiceD.style.backgroundColor="rgb(131, 160, 212)";   
-        
+        return answerCorrect
+    } else {
+        answerIncorrect
     };
+    if(choiceBClicked.selectedAnswer===quizzQuestion.correct) {
+        return answerCorrect
+    } else {
+        answerIncorrect
+    };
+    if(choiceCClicked.selectedAnswer===quizzQuestion.correct) {
+        return answerCorrect
+    } else {
+        answerIncorrect
+    };
+    if(choiceDClicked.selectedAnswer===quizzQuestion.correct) {
+        return answerCorrect
+    } else {
+        answerIncorrect
+    };
+
+
 };
+
+// function submitAnswer(){
+
+//     currentQuestion++;
+//     if(currentQuestion>=quizzQuestion.lenght){
+        
+//         return "You have completed the quizz"
+
+
+
+//     } else{
+        
+
+
+//     choiceC.style.backgroundColor="rgb(131, 160, 212)";
+//     choiceB.style.backgroundColor="rgb(131, 160, 212)";
+//     choiceA.style.backgroundColor="rgb(131, 160, 212)";
+//     choiceD.style.backgroundColor="rgb(131, 160, 212)";   
+        
+//     checkSelection();
+//     };
+// };
    
 
    
