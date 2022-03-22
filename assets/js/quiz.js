@@ -2,7 +2,7 @@
 var quizzQuestion=[{
     q: "What is CSS stand for?",
     a:['Cascading Style Sheets','Creative Style Sheets','Colorful Style Sheets','Computer Style Sheets'],
-    correct:'Cascading Style Sheets'
+    correct:'a'
 },
 
 {
@@ -12,26 +12,26 @@ var quizzQuestion=[{
     'Make the background in all divs that are of the class "p" be bright red',
     'Make the text inside any divs inside of any paragraph be bright red',
     'Make the text inside any paragraph that is inside any div be bright red'],
-    correct:'Make the background in all divs that are of the class "p" be bright red'
+    correct:'b'
 },
 
 {
     q: "Which HTML attribute is used to define inline styles?",
     a:['font','styles','style','class'],
-    correct:'styles'
+    correct:'b'
 
 },
 
 {
     q:"Which is the correct CSS syntax?",
     a:['{body:color=black;}','body{color:black;}','body:color=black;','{body;color:black;}'],
-    correct:'body{color:black;}'
+    correct:'b'
 },
 
 {
     q:"How do you insert a comment in a CSS file?",
     a:['// this is a comment','/* this is a comment*/','.this is a comment','//this is a comment//'],
-    correct:'/* this is a comment*/'
+    correct:'b'
 }];
 
 
@@ -50,7 +50,7 @@ var questionBox=document.getElementById("question-container");
 var currentQuestion =0;
 
 startButton.addEventListener('click',showQuestion);
-submitButton.addEventListener('click',showAnswerandNext);
+submitButton.addEventListener('click',submitAnswer);
 choiceA.addEventListener('click',choiceAClicked);
 choiceB.addEventListener('click',choiceBClicked);
 choiceC.addEventListener('click',choiceCClicked);
@@ -59,8 +59,7 @@ choiceD.addEventListener('click',choiceDClicked);
 
 function showQuestion(){
 
-    currentQuestion++;
-    currentQuestion = 0;
+    
     conTent.style.display='none';
     startButton.style.display='none';
     questionBox.style.display='block';
@@ -74,57 +73,54 @@ function showQuestion(){
     choiceD.innerHTML="d."+quizzQuestion[currentQuestion].a[3];
 };
 
-function showAnswerandNext(){
-    if(quizzQuestion[currentQuestion].correct===quizzQuestion[currentQuestion].a[0]) {
+
+
+function submitAnswer(){
+
+
+
+
+    if(quizzQuestion[currentQuestion].correct===choiceA.value) {
+
+    
     
         displayAnswer.innerHTML="A is correct";
         
       
     }
-    else if(quizzQuestion[currentQuestion].correct===quizzQuestion[currentQuestion].a[1]) {
+    else if(quizzQuestion[currentQuestion].correct===choiceB.value) {
     
     
         displayAnswer.innerHTML="B is correct";
        
     
     }
-    else if(quizzQuestion[currentQuestion].correct===quizzQuestion[currentQuestion].a[2]) {
+    else if(quizzQuestion[currentQuestion].correct===choiceC.value) {
     
         displayAnswer.innerHTML="C is correct";
         
     
     }
-    else if(quizzQuestion[currentQuestion].correct===quizzQuestion[currentQuestion].a[3]) {
+    else if(quizzQuestion[currentQuestion].correct===choiceD.value) {
     
         displayAnswer.innerHTML="D is correct";
        
     
     } else{
+
         displayAnswer.innerHTML="Incorrect";
         
     
     };
-        currentQuestion++;
-    if(currentQuestion>=quizzQuestion.lenght){
-        
-        return "You have completed the quizz"
+
+    currentQuestion++;
 
 
-
-    } else{
-        
-
-
-    choiceC.style.backgroundColor="rgb(131, 160, 212)";
-    choiceB.style.backgroundColor="rgb(131, 160, 212)";
-    choiceA.style.backgroundColor="rgb(131, 160, 212)";
-    choiceD.style.backgroundColor="rgb(131, 160, 212)"; 
-        
-    
-    };
 };
 
 function choiceAClicked(){
+
+ 
 
     choiceA.style.backgroundColor="aqua";
     choiceB.style.backgroundColor="rgb(131, 160, 212)";
@@ -134,6 +130,7 @@ function choiceAClicked(){
 
 };
 function choiceBClicked(){
+   
 
     choiceB.style.backgroundColor="aqua";
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
@@ -142,6 +139,7 @@ function choiceBClicked(){
 
 };
 function choiceCClicked(){
+    
 
     choiceC.style.backgroundColor="aqua";
     choiceB.style.backgroundColor="rgb(131, 160, 212)";
@@ -150,6 +148,7 @@ function choiceCClicked(){
 
 };
 function choiceDClicked(){
+   
 
     choiceD.style.backgroundColor="aqua";
     choiceB.style.backgroundColor="rgb(131, 160, 212)";
@@ -157,6 +156,31 @@ function choiceDClicked(){
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
 
 };
+
+
+
+    //     currentQuestion++;
+    // if(currentQuestion>=quizzQuestion.length){
+        
+    //     return "You have completed the quizz"
+
+
+
+    // } else{
+        
+        
+    // choiceC.style.backgroundColor="rgb(131, 160, 212)";
+    // choiceB.style.backgroundColor="rgb(131, 160, 212)";
+    // choiceA.style.backgroundColor="rgb(131, 160, 212)";
+    // choiceD.style.backgroundColor="rgb(131, 160, 212)"; 
+        
+    
+    // };
+
+    
+// };
+
+
 
 
 
