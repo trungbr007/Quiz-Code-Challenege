@@ -39,6 +39,7 @@ var quizzQuestion=[{
 const startButton=document.getElementById("start-button");
 const submitButton=document.getElementById("submit-button");
 const displayAnswer =document.getElementById("show-Answer");
+const scoreRender=document.getElementById("score")
 var tiTle= document.querySelector(".title");
 var conTent=document.querySelector(".content");
 var choiceA=document.getElementById("choiceA");
@@ -46,8 +47,12 @@ var choiceB=document.getElementById("choiceB");
 var choiceC=document.getElementById("choiceC");
 var choiceD=document.getElementById("choiceD");
 var questionBox=document.getElementById("question-container");
+var timeIsUp=document.getElementById("timeIsUp");
+var timerDefault=document.getElementById("tiMer");
+
 
 var currentQuestion =0;
+var answer
 
 startButton.addEventListener('click',showQuestion);
 submitButton.addEventListener('click',submitAnswer);
@@ -58,12 +63,19 @@ choiceD.addEventListener('click',choiceDClicked);
 
 
 function showQuestion(){
-
     
+    Timer();
+    
+
+    if(currentQuestion>=quizzQuestion.length){
+        return "You have completed the quizz"
+    };
+
     conTent.style.display='none';
     startButton.style.display='none';
     questionBox.style.display='block';
     submitButton.style.display='block';
+    
 
 
     tiTle.innerHTML="Question "+(currentQuestion+1)+": "+ quizzQuestion[currentQuestion].q;
@@ -71,6 +83,8 @@ function showQuestion(){
     choiceB.innerHTML="b."+quizzQuestion[currentQuestion].a[1];
     choiceC.innerHTML="c."+quizzQuestion[currentQuestion].a[2];
     choiceD.innerHTML="d."+quizzQuestion[currentQuestion].a[3];
+    
+  
 };
 
 
@@ -80,40 +94,36 @@ function submitAnswer(){
 
 
 
-    if(quizzQuestion[currentQuestion].correct===choiceA.value) {
+    if(quizzQuestion[currentQuestion].correct===answer) {
 
     
     
-        displayAnswer.innerHTML="A is correct";
+        displayAnswer.innerHTML="Answer is correct";
+
+    
+
+    }
         
       
-    }
-    else if(quizzQuestion[currentQuestion].correct===choiceB.value) {
-    
-    
-        displayAnswer.innerHTML="B is correct";
-       
-    
-    }
-    else if(quizzQuestion[currentQuestion].correct===choiceC.value) {
-    
-        displayAnswer.innerHTML="C is correct";
-        
-    
-    }
-    else if(quizzQuestion[currentQuestion].correct===choiceD.value) {
-    
-        displayAnswer.innerHTML="D is correct";
-       
-    
-    } else{
+    else{
 
-        displayAnswer.innerHTML="Incorrect";
-        
+        displayAnswer.innerHTML="Answer is incorrect";
+ 
     
     };
 
-    currentQuestion++;
+
+
+   currentQuestion++;
+
+
+    showQuestion();
+
+
+    choiceC.style.backgroundColor="rgb(131, 160, 212)";
+    choiceB.style.backgroundColor="rgb(131, 160, 212)";
+    choiceA.style.backgroundColor="rgb(131, 160, 212)";
+    choiceD.style.backgroundColor="rgb(131, 160, 212)"; 
 
 
 };
@@ -126,6 +136,7 @@ function choiceAClicked(){
     choiceB.style.backgroundColor="rgb(131, 160, 212)";
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
     choiceD.style.backgroundColor="rgb(131, 160, 212)";
+    answer="a";
 
 
 };
@@ -136,6 +147,7 @@ function choiceBClicked(){
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
     choiceD.style.backgroundColor="rgb(131, 160, 212)";
+    answer="b";
 
 };
 function choiceCClicked(){
@@ -145,7 +157,7 @@ function choiceCClicked(){
     choiceB.style.backgroundColor="rgb(131, 160, 212)";
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
     choiceD.style.backgroundColor="rgb(131, 160, 212)";
-
+    answer="c";
 };
 function choiceDClicked(){
    
@@ -154,32 +166,31 @@ function choiceDClicked(){
     choiceB.style.backgroundColor="rgb(131, 160, 212)";
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
-
+    answer="d";
 };
 
 
 
-    //     currentQuestion++;
-    // if(currentQuestion>=quizzQuestion.length){
-        
-    //     return "You have completed the quizz"
-
-
-
-    // } else{
-        
-        
-    // choiceC.style.backgroundColor="rgb(131, 160, 212)";
-    // choiceB.style.backgroundColor="rgb(131, 160, 212)";
-    // choiceA.style.backgroundColor="rgb(131, 160, 212)";
-    // choiceD.style.backgroundColor="rgb(131, 160, 212)"; 
-        
+function scoreRender(){
     
-    // };
-
     
-// };
+}
 
+function Timer(){
+    var timeleft = 30;
+
+    var downloadTimer = setInterval(function function1(){
+   timerDefault.innerHTML = timeleft + 
+    " "+"seconds remaining";
+
+    timeleft=timeleft-1;
+    if(timeleft < 0){
+        clearInterval(downloadTimer);
+        timeIsUp.innerHTML = "Time is up!"
+    };
+    }, 1000);
+
+};
 
 
 
