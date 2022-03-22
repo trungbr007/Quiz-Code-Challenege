@@ -122,6 +122,7 @@ function showAnswerandNext(){
         
     
     };
+};
 
 function choiceAClicked(){
 
@@ -155,7 +156,6 @@ function choiceDClicked(){
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
 
-};
 };
 
 
