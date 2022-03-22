@@ -171,10 +171,7 @@ function choiceDClicked(){
 
 
 
-function scoreRender(){
-    
-    
-}
+
 
 function Timer(){
     var timeleft = 30;
