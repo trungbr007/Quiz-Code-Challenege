@@ -39,7 +39,6 @@ var quizzQuestion=[{
 const startButton=document.getElementById("start-button");
 const submitButton=document.getElementById("submit-button");
 const displayAnswer =document.getElementById("show-Answer");
-const scoreRender=document.getElementById("score")
 var tiTle= document.querySelector(".title");
 var conTent=document.querySelector(".content");
 var choiceA=document.getElementById("choiceA");
