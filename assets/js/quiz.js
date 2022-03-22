@@ -39,6 +39,7 @@ var quizzQuestion=[{
 const startButton=document.getElementById("start-button");
 const submitButton=document.getElementById("submit-button");
 const displayAnswer =document.getElementById("show-Answer");
+const nextButton=document.getElementById("next-button");
 var tiTle= document.querySelector(".title");
 var conTent=document.querySelector(".content");
 var choiceA=document.getElementById("choiceA");
@@ -48,22 +49,29 @@ var choiceD=document.getElementById("choiceD");
 var questionBox=document.getElementById("question-container");
 var timeIsUp=document.getElementById("timeIsUp");
 var timerDefault=document.getElementById("tiMer");
+var ansArea=document.getElementById("question-container");
+var viewHighScore=document.getElementById("view-high-score");
+var scoRe=document.getElementById("score");
 
 
 var currentQuestion =0;
 var answer
 
+
 startButton.addEventListener('click',showQuestion);
 submitButton.addEventListener('click',submitAnswer);
+nextButton.addEventListener('click',nextQuestion);
 choiceA.addEventListener('click',choiceAClicked);
 choiceB.addEventListener('click',choiceBClicked);
 choiceC.addEventListener('click',choiceCClicked);
 choiceD.addEventListener('click',choiceDClicked);
 
 
+
+
 function showQuestion(){
     
-    Timer();
+    Timer() ;
     
 
     if(currentQuestion>=quizzQuestion.length){
@@ -78,6 +86,7 @@ function showQuestion(){
 
 
     tiTle.innerHTML="Question "+(currentQuestion+1)+": "+ quizzQuestion[currentQuestion].q;
+    tiTle.style.fontSize="x-large";
     choiceA.innerHTML="a."+quizzQuestion[currentQuestion].a[0];
     choiceB.innerHTML="b."+quizzQuestion[currentQuestion].a[1];
     choiceC.innerHTML="c."+quizzQuestion[currentQuestion].a[2];
@@ -98,7 +107,7 @@ function submitAnswer(){
     
     
         displayAnswer.innerHTML="Answer is correct";
-
+       
     
 
     }
@@ -107,16 +116,13 @@ function submitAnswer(){
     else{
 
         displayAnswer.innerHTML="Answer is incorrect";
- 
+        
     
     };
 
 
 
-   currentQuestion++;
-
-
-    showQuestion();
+    nextButton.style.display='block';
 
 
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
@@ -124,8 +130,28 @@ function submitAnswer(){
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
     choiceD.style.backgroundColor="rgb(131, 160, 212)"; 
 
+    scoreRender();
+
 
 };
+
+function nextQuestion(){
+
+    
+    currentQuestion++;
+    if(currentQuestion>=quizzQuestion.length){
+
+        tiTle.innerHTML="Congratulations";
+        tiTle.style.fontSize="x-large";
+        ansArea.innerHTML="You have completed the quizz";
+        nextButton.style.display="none";
+        submitButton.style.display="none";
+        
+
+    };
+    
+    showQuestion();
+}
 
 function choiceAClicked(){
 
@@ -173,18 +199,18 @@ function choiceDClicked(){
 
 
 function Timer(){
-    var timeleft = 30;
+    var timeleft = 60;
 
-    var downloadTimer = setInterval(function function1(){
+    var downloadTimer = setInterval(function(){
    timerDefault.innerHTML = timeleft + 
     " "+"seconds remaining";
 
     timeleft=timeleft-1;
-    if(timeleft < 0){
+    if(timeleft <=0){
         clearInterval(downloadTimer);
         timeIsUp.innerHTML = "Time is up!"
     };
-    }, 1000);
+    },1000);
 
 };
 
