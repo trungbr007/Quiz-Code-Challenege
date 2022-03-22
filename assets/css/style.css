@@ -23,7 +23,7 @@ main{
 .container{
     border: 1px solid black;
     border-radius: 15px;
-    height: 400px;
+    height: 500px;
     margin: 50px 150px 0px 150px;
     text-align: center;
     background-color: rgb(219, 219, 243);
