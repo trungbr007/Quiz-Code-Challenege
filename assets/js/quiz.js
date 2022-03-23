@@ -147,10 +147,12 @@ function nextQuestion(){
         nextButton.style.display="none";
         submitButton.style.display="none";
         
+        
 
     };
     
     showQuestion();
+    displayAnswer.innerHTML=" ";
 }
 
 function choiceAClicked(){
