@@ -1,4 +1,5 @@
 
+
 var quizzQuestion=[{
     q: "What is CSS stand for?",
     a:['Cascading Style Sheets','Creative Style Sheets','Colorful Style Sheets','Computer Style Sheets'],
@@ -59,7 +60,12 @@ var answer
 var timeleft = 60;
 
 
-startButton.addEventListener('click',showQuestion);
+function startHandler() {
+    Timer();
+    showQuestion();
+}
+
+startButton.addEventListener('click', startHandler);
 submitButton.addEventListener('click',submitAnswer);
 nextButton.addEventListener('click',nextQuestion);
 choiceA.addEventListener('click',choiceAClicked);
@@ -77,6 +83,8 @@ function showScore(){
     scoRe.innerHTML="Score: "+scoRe
 
 }
+
+
 
 function showQuestion(){
     
@@ -121,10 +129,10 @@ function submitAnswer(){
         
       
     else{
-
+        console.log('penalty: ', timeleft);
         displayAnswer.innerHTML="Answer is incorrect";
-        timeleft-=10;
-
+        timeleft -= 10;
+        if (timeleft < 10) timeleft = 0;
     
     };
 
@@ -140,7 +148,7 @@ function submitAnswer(){
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
     choiceD.style.backgroundColor="rgb(131, 160, 212)"; 
 
-    scoreRender();
+    // scoreRender();
 
 
 };
@@ -238,7 +246,6 @@ function Timer(){
     },1000);
 
 };
-
 
 
 
