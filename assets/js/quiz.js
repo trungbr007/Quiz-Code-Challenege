@@ -57,7 +57,6 @@ var scoRe=document.getElementById("score");
 var currentQuestion =0;
 var answer
 var timeleft = 60;
-var scoRe=0;
 
 
 startButton.addEventListener('click',showQuestion);
@@ -75,14 +74,13 @@ viewHighScore.addEventListener('click',showScore);
 function showScore(){
 
     scoRe.style.display='block';
-
-    scoRe.innerHTML="Score: "+ scoRe;
+    scoRe.innerHTML="Score: "+scoRe
 
 }
 
 function showQuestion(){
     
-   
+    // Timer() ;
     
 
     if(currentQuestion>=quizzQuestion.length){
@@ -103,7 +101,6 @@ function showQuestion(){
     choiceC.innerHTML="c."+quizzQuestion[currentQuestion].a[2];
     choiceD.innerHTML="d."+quizzQuestion[currentQuestion].a[3];
     
-    // Timer() ;
   
 };
 
@@ -117,8 +114,9 @@ function submitAnswer(){
     if(quizzQuestion[currentQuestion].correct===answer) {
 
     
+    
         displayAnswer.innerHTML="Answer is correct";
-        
+        scoRe+=10;
     }
         
       
@@ -142,7 +140,7 @@ function submitAnswer(){
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
     choiceD.style.backgroundColor="rgb(131, 160, 212)"; 
 
-   
+    scoreRender();
 
 
 };
@@ -159,14 +157,22 @@ function nextQuestion(){
         nextButton.style.display="none";
         submitButton.style.display="none";
         
+        
 
     }
-    else {
+    else if (timeleft=0){
+        tiTle.innerHTML="Congratulations";
+        tiTle.style.fontSize="x-large";
+        ansArea.innerHTML="You have completed the quizz";
+        nextButton.stylee.display="none";
+        submitButton.style.display="none";
+    }
 
-    // showQuestion();
+  
+    
+    showQuestion();
     displayAnswer.innerHTML=" ";
     submitButton.style.display="none";
-};
 };
 
 function choiceAClicked(){
