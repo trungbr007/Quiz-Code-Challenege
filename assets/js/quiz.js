@@ -50,12 +50,14 @@ var questionBox=document.getElementById("question-container");
 var timeIsUp=document.getElementById("timeIsUp");
 var timerDefault=document.getElementById("tiMer");
 var ansArea=document.getElementById("question-container");
-var viewHighScore=document.getElementById("view-high-score");
+var viewHighScore=document.querySelector(".view-high-score");
 var scoRe=document.getElementById("score");
 
 
 var currentQuestion =0;
 var answer
+var timeleft = 60;
+var scoRe=0;
 
 
 startButton.addEventListener('click',showQuestion);
@@ -65,13 +67,22 @@ choiceA.addEventListener('click',choiceAClicked);
 choiceB.addEventListener('click',choiceBClicked);
 choiceC.addEventListener('click',choiceCClicked);
 choiceD.addEventListener('click',choiceDClicked);
+viewHighScore.addEventListener('click',showScore);
 
 
 
+
+function showScore(){
+
+    scoRe.style.display='block';
+
+    scoRe.innerHTML="Score: "+ scoRe;
+
+}
 
 function showQuestion(){
     
-    Timer() ;
+   
     
 
     if(currentQuestion>=quizzQuestion.length){
@@ -92,6 +103,7 @@ function showQuestion(){
     choiceC.innerHTML="c."+quizzQuestion[currentQuestion].a[2];
     choiceD.innerHTML="d."+quizzQuestion[currentQuestion].a[3];
     
+    // Timer() ;
   
 };
 
@@ -105,24 +117,24 @@ function submitAnswer(){
     if(quizzQuestion[currentQuestion].correct===answer) {
 
     
-    
         displayAnswer.innerHTML="Answer is correct";
-       
-    
-
+        
     }
         
       
     else{
 
         displayAnswer.innerHTML="Answer is incorrect";
-        
+        timeleft-=10;
+
     
     };
 
 
 
+
     nextButton.style.display='block';
+    submitButton.style.display='none';
 
 
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
@@ -130,7 +142,7 @@ function submitAnswer(){
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
     choiceD.style.backgroundColor="rgb(131, 160, 212)"; 
 
-    scoreRender();
+   
 
 
 };
@@ -147,13 +159,15 @@ function nextQuestion(){
         nextButton.style.display="none";
         submitButton.style.display="none";
         
-        
 
-    };
-    
-    showQuestion();
+    }
+    else {
+
+    // showQuestion();
     displayAnswer.innerHTML=" ";
-}
+    submitButton.style.display="none";
+};
+};
 
 function choiceAClicked(){
 
@@ -164,7 +178,7 @@ function choiceAClicked(){
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
     choiceD.style.backgroundColor="rgb(131, 160, 212)";
     answer="a";
-
+    submitButton.style.display="block";
 
 };
 function choiceBClicked(){
@@ -175,6 +189,7 @@ function choiceBClicked(){
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
     choiceD.style.backgroundColor="rgb(131, 160, 212)";
     answer="b";
+    submitButton.style.display="block";
 
 };
 function choiceCClicked(){
@@ -185,6 +200,7 @@ function choiceCClicked(){
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
     choiceD.style.backgroundColor="rgb(131, 160, 212)";
     answer="c";
+    submitButton.style.display="block";
 };
 function choiceDClicked(){
    
@@ -194,6 +210,7 @@ function choiceDClicked(){
     choiceC.style.backgroundColor="rgb(131, 160, 212)";
     choiceA.style.backgroundColor="rgb(131, 160, 212)";
     answer="d";
+    submitButton.style.display="block";
 };
 
 
@@ -201,7 +218,7 @@ function choiceDClicked(){
 
 
 function Timer(){
-    var timeleft = 60;
+    
 
     var downloadTimer = setInterval(function(){
    timerDefault.innerHTML = timeleft + 
